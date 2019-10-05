@@ -13,11 +13,12 @@ public class Fraction {
         }
     }
     public Fraction(String str){
+
         String[] arr = str.split("/");
         if (checkFraction(Integer.parseInt(arr[0]),Integer.parseInt(arr[1]))){
             numerator = Integer.parseInt(arr[0]);
             denominator = Integer.parseInt(arr[1]);
-            reduction();
+           reduction();
         }
     }
     public boolean checkFraction(long num, long den){
@@ -37,7 +38,7 @@ public class Fraction {
             numerator *= -1;
             denominator *= -1;
         }
-        long mn = factor(numerator, denominator);
+        long mn = factor(Math.abs(numerator),  Math.abs(denominator));
 
         if(mn != 0) {
             numerator = numerator / mn;
@@ -86,9 +87,9 @@ public class Fraction {
     }
 
     public Fraction minus(){
-        Fraction a = new Fraction(numerator,denominator);
-        a.numerator *=-1;
-        return  (a);
+       // Fraction a = new Fraction(numerator,denominator);
+       // a.numerator *=-1;
+        return  (new Fraction(numerator*(-1),denominator));
     }
 
     public Boolean equally(Fraction d){
