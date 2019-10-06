@@ -64,7 +64,7 @@ public class Complex {
         return new Complex(pow(module(),n)*cos(n*angleRad()),pow(module(),n)*sin(n*angleRad()));
     }
     public Complex complexRoot(int n, int i){
-            return new Complex(pow(module(),1.0/i)*cos((angleRad()+2*i*PI)/i),pow(module(),1.0/i)*sin((angleRad()+2*i*PI)/i));
+            return new Complex(pow(module(),1.0/n)*cos((angleRad()+2*i*PI)/n),pow(module(),1.0/n)*sin((angleRad()+2*i*PI)/n));
     }
     public boolean equally(Complex a){
         return(a.real==real && a.imaginary==imaginary);
