@@ -8,10 +8,19 @@ public class Complex {
         imaginary = b;
     }
     public Complex(String str){
-        String[] strs = str.split("\\+");
-        real = Double.valueOf(strs[0]);
-        String[] strs2 = strs[1].split("i\\*");
-        imaginary = Double.valueOf(strs2[1]);
+
+        if(str.contains("-")){
+            String[]  strs= str.split("-i");
+            real = Double.valueOf(strs[0]);
+            String[] strI = str.split("i\\*");
+            imaginary = Double.valueOf(strI[1])*(-1);
+        }else{
+            String[] strs = str.split("\\+");
+            real = Double.valueOf(strs[0]);
+            String[] strI = str.split("i\\*");
+            imaginary = Double.valueOf(strI[1]);
+        }
+
     }
     public Complex copyComplex(){
         return new Complex(real,imaginary);
@@ -42,15 +51,43 @@ public class Complex {
         return sqrt(pow(real,2)+pow(imaginary,2));
     }
     public double angleRad(){
-//        arcTg(b/a), a>0;
-//        pi/2, a = 0, b > 0;
-//        arcTg(b/a) + pi, a < 0;
-//        -pi/2, a = 0, b < 0;
         if(real>0) return atan(imaginary/real);
         else if(real<0) return atan(imaginary/real)+PI;
         else if(imaginary>0) return PI/2;
         else if(imaginary<0) return -PI/2;
         else return 0;
+    }
+    public double angleDeg(){
+        return angleRad()*180/PI;
+    }
+    public Complex complexPow(int n){
+        return new Complex(pow(module(),n)*cos(n*angleRad()),pow(module(),n)*sin(n*angleRad()));
+    }
+    public Complex complexRoot(int n, int i){
+            return new Complex(pow(module(),1.0/i)*cos((angleRad()+2*i*PI)/i),pow(module(),1.0/i)*sin((angleRad()+2*i*PI)/i));
+    }
+    public boolean equally(Complex a){
+        return(a.real==real && a.imaginary==imaginary);
+    }
+    public boolean notEqually(Complex a){
+        return(!equally(a));
+    }
+    public double getReal(){
+        return real;
+    }
+    public double getImaginary(){
+        return imaginary;
+    }
+    public String getRealSting(){
+        return Double.toString(real);
+    }
+    public String getImaginaryString(){
+        return Double.toString(imaginary);
+    }
+    public String getComplex(){
+        if(imaginary>=0)
+            return getRealSting()+"+i*"+getImaginaryString();
+        else return getRealSting()+"-i*"+imaginary*(-1);
     }
 
 }

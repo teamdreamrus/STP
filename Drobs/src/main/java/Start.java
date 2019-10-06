@@ -9,7 +9,8 @@ public class Start {
 //        System.out.println(a.toString());
 //        System.out.println(a.minus().toString());
 
-    Complex c = new Complex("1+i*5");
+    Complex c = new Complex("1+i*1");
+        System.out.println(c.getComplex());
 
     }
 }
