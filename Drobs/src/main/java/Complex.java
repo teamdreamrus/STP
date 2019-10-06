@@ -1,8 +1,8 @@
 import static java.lang.Math.*;
 
 public class Complex {
-    private double real;
-    private double imaginary;
+    public double real;
+    public double imaginary;
     public Complex(double a,double b){
         real = a;
         imaginary = b;
