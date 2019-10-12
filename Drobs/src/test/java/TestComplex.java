@@ -7,7 +7,7 @@ public class TestComplex {
     public void testComplex(){
         Complex actual = new Complex(1,-5);
         Complex expected = new Complex("1-i*5");
-        Assert.assertEquals(expected.real, actual.real,0.1);
+        Assert.assertEquals(expected.getReal(), actual.getReal(),0.1);
         Assert.assertEquals(expected.imaginary, actual.imaginary,0.1);
     }
 

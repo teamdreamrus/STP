@@ -1,8 +1,8 @@
 import static java.lang.Math.*;
-
+// исправить конструктор строки, переопределить КОПИ и ГЕТКОМПЛЕКС(toString)
 public class Complex {
-    public double real;
-    public double imaginary;
+    private double real;
+    private double imaginary;
     public Complex(double a,double b){
         real = a;
         imaginary = b;
@@ -11,18 +11,18 @@ public class Complex {
 
         if(str.contains("-")){
             String[]  strs= str.split("-i");
-            real = Double.valueOf(strs[0]);
+            real = Double.parseDouble(strs[0]);
             String[] strI = str.split("i\\*");
-            imaginary = Double.valueOf(strI[1])*(-1);
+            imaginary = Double.parseDouble(strI[1])*(-1);
         }else{
             String[] strs = str.split("\\+");
-            real = Double.valueOf(strs[0]);
+            real = Double.parseDouble(strs[0]);
             String[] strI = str.split("i\\*");
-            imaginary = Double.valueOf(strI[1]);
+            imaginary = Double.parseDouble(strI[1]);
         }
 
     }
-    public Complex copyComplex(){
+    public Complex copy(){
         return new Complex(real,imaginary);
     }
     public Complex add(Complex a){
