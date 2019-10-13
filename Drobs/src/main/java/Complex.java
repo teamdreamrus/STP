@@ -22,7 +22,8 @@ public class Complex {
         }
 
     }
-    public Complex copy(){
+    @Override
+    public Complex clone(){
         return new Complex(real,imaginary);
     }
     public Complex add(Complex a){
@@ -84,7 +85,8 @@ public class Complex {
     public String getImaginaryString(){
         return Double.toString(imaginary);
     }
-    public String getComplex(){
+    @Override
+    public String toString(){
         if(imaginary>=0)
             return getRealSting()+"+i*"+getImaginaryString();
         else return getRealSting()+"-i*"+imaginary*(-1);
