@@ -1,6 +1,6 @@
 import static java.lang.Math.*;
-// исправить конструктор строки, переопределить КОПИ и ГЕТКОМПЛЕКС(toString)
-public class Complex {
+// исправить конструктор строки
+public class Complex implements Operations<Complex> {
     private double real;
     private double imaginary;
     public Complex(double a,double b){
@@ -9,7 +9,7 @@ public class Complex {
     }
     public Complex(String str){
 
-        if(str.contains("-")){
+        if(str.contains("-")){//Может быть отрицательм А тогда не сработает (юз реглярные выражения)
             String[]  strs= str.split("-i");
             real = Double.parseDouble(strs[0]);
             String[] strI = str.split("i\\*");
@@ -26,21 +26,27 @@ public class Complex {
     public Complex clone(){
         return new Complex(real,imaginary);
     }
+    @Override
     public Complex add(Complex a){
         return new Complex(a.real+ real,a.imaginary+imaginary);
     }
+    @Override
     public Complex multiply(Complex a){
         return new Complex(real*a.real - imaginary*a.imaginary,real*a.imaginary+ a.real*imaginary);
     }
+    @Override
     public Complex square(){
         return new Complex(real*real - imaginary*imaginary,real*imaginary+ real*imaginary);
     }
+    @Override
     public Complex turnOver(){
         return new Complex(real/(pow(real,2) + pow(imaginary,2)), (-1 *imaginary) /( pow(real,2) + pow(imaginary,2) ));
     }
+    @Override
     public Complex subtraction(Complex a){
         return new Complex(real -  a.real,imaginary-a.imaginary);
     }
+    @Override
     public Complex division(Complex a){
         return new Complex((real*a.real + imaginary*a.imaginary)/(pow(a.real,2) + pow(a.imaginary,2)),(a.real*imaginary - real*a.imaginary)/(pow(a.real,2) + pow(a.imaginary,2)));
     }

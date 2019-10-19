@@ -13,7 +13,8 @@ public class Start {
 //        System.out.println(c.toString());
 
 
-        PNumber n = new PNumber("A.A",16,2);
-        System.out.println(n.getNumber());
+        PNumber n = new PNumber("A.A","16","2");
+       // System.out.println(n.convertFromDecimal(58.625,16,2));
     }
+
 }
