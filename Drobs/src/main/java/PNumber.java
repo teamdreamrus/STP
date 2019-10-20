@@ -3,7 +3,7 @@ import java.util.Arrays;
 
 import static java.lang.Math.pow;
 
-public class PNumber implements Operations<PNumber>{
+public class PNumber implements Operations<PNumber> {
     private Double number;
     private int base;
     private int accuracy;
@@ -20,9 +20,15 @@ public class PNumber implements Operations<PNumber>{
     public PNumber(String number, String base, String accuracy) {
 
         if (CheckB(Integer.parseInt(base)) & CheckC(Integer.parseInt(accuracy))) {
-            this.number = convertToDecimal(number, Integer.parseInt(base));
-            this.base = Integer.parseInt(base);
-            this.accuracy = Integer.parseInt(accuracy);
+            if (Integer.parseInt(base) != 10) {
+                this.number = convertToDecimal(number, Integer.parseInt(base));
+                this.base = Integer.parseInt(base);
+                this.accuracy = Integer.parseInt(accuracy);
+            } else {
+                this.number = Double.parseDouble(number);
+                this.base = Integer.parseInt(base);
+                this.accuracy = Integer.parseInt(accuracy);
+            }
         } else throw new ArithmeticException("error enter data");
     }
 
@@ -78,30 +84,36 @@ public class PNumber implements Operations<PNumber>{
         else throw new ArithmeticException("error enter data(accuracy)");
 
     }
+
     @Override
     public PNumber add(PNumber d) {
         return new PNumber(number + d.getNumber(), base, accuracy);
     }
+
     @Override
     public PNumber multiply(PNumber d) {
         return new PNumber(number * d.getNumber(), base, accuracy);
     }
+
     @Override
     public PNumber subtraction(PNumber d) {
         return new PNumber(number - d.getNumber(), base, accuracy);
     }
+
     @Override
     public PNumber division(PNumber d) {
         if (d.getNumber() != 0)
             return new PNumber(number / d.getNumber(), base, accuracy);
         else throw new ArithmeticException("division by zero, operation is cancel");
     }
+
     @Override
     public PNumber turnOver() {
         if (number != 0)
             return new PNumber(1 / number, base, accuracy);
         else throw new ArithmeticException("division by zero, operation is cancel");
     }
+
     @Override
     public PNumber square() {
         return new PNumber(number * number, base, accuracy);
@@ -150,10 +162,12 @@ public class PNumber implements Operations<PNumber>{
             result += changeToNumber(num) * Math.pow(base, position);
         }
 
-        for (int i = -1; Math.abs(i) <= massNumber[1].length(); i--) {
-            char num = massNumber[1].charAt(Math.abs(i) - 1);
-            result += changeToNumber(num) * Math.pow(base, i);
+        if(massNumber.length==2){
+            for (int i = -1; Math.abs(i) <= massNumber[1].length(); i--) {
+                char num = massNumber[1].charAt(Math.abs(i) - 1);
+                result += changeToNumber(num) * Math.pow(base, i);
 
+            }
         }
         return result;
     }

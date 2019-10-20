@@ -93,7 +93,6 @@ public class Fraction implements Operations<Fraction> {
         return denominator;
     }
 
-
     @Override
     public Fraction add(Fraction d1) {
         return new Fraction(numerator * d1.denominator + d1.numerator * denominator, denominator * d1.denominator);

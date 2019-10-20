@@ -1,5 +1,4 @@
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 public class TestComplex {
@@ -8,16 +7,16 @@ public class TestComplex {
         Complex actual = new Complex(1,-5);
         Complex expected = new Complex("1-i*5");
         Assert.assertEquals(expected.getReal(), actual.getReal(),0.1);
-        Assert.assertEquals(expected.imaginary, actual.imaginary,0.1);
+        Assert.assertEquals(expected.getImaginary(), actual.getImaginary(),0.1);
     }
 
     @Test
     public void testCopy(){
         Complex actual = new Complex(5,6);
-        actual.copyComplex();
+        actual.clone();
         Complex expected = new Complex(5,6);
-        Assert.assertEquals(expected.real, actual.real,0.1);
-        Assert.assertEquals(expected.imaginary, actual.imaginary,0.1);
+        Assert.assertEquals(expected.getReal(), actual.getReal(),0.1);
+        Assert.assertEquals(expected.getImaginary(), actual.getImaginary(),0.1);
     }
 
     @Test
@@ -26,8 +25,8 @@ public class TestComplex {
         Complex cn2 = new Complex(9,4);
         Complex actual = cn1.add(cn2);
         Complex expected = new Complex(16,13);
-        Assert.assertEquals(expected.real, actual.real, 0.1);
-        Assert.assertEquals(expected.imaginary, actual.imaginary, 0.1);
+        Assert.assertEquals(expected.getReal(), actual.getReal(), 0.1);
+        Assert.assertEquals(expected.getImaginary(), actual.getImaginary(), 0.1);
     }
 
     @Test
@@ -36,8 +35,8 @@ public class TestComplex {
         Complex cn2 = new Complex(9,4);
         Complex actual = cn1.multiply(cn2);
         Complex expected = new Complex(27,109);
-        Assert.assertEquals(expected.real, actual.real, 0.1);
-        Assert.assertEquals(expected.imaginary, actual.imaginary, 0.1);
+        Assert.assertEquals(expected.getReal(), actual.getReal(), 0.1);
+        Assert.assertEquals(expected.getImaginary(), actual.getImaginary(), 0.1);
     }
 
     @Test
@@ -45,8 +44,8 @@ public class TestComplex {
         Complex cn = new Complex(7,9);
         Complex actual = cn.square();
         Complex expected = new Complex(-32,126);
-        Assert.assertEquals(expected.real, actual.real, 0.1);
-        Assert.assertEquals(expected.imaginary, actual.imaginary, 0.1);
+        Assert.assertEquals(expected.getReal(), actual.getReal(), 0.1);
+        Assert.assertEquals(expected.getImaginary(), actual.getImaginary(), 0.1);
     }
 
     @Test
@@ -54,8 +53,8 @@ public class TestComplex {
         Complex cn = new Complex(7,9);
         Complex actual = cn.turnOver();
         Complex expected = new Complex(0.05,-0.07);
-        Assert.assertEquals(expected.real, actual.real, 0.1);
-        Assert.assertEquals(expected.imaginary, actual.imaginary, 0.1);
+        Assert.assertEquals(expected.getReal(), actual.getReal(), 0.1);
+        Assert.assertEquals(expected.getImaginary(), actual.getImaginary(), 0.1);
     }
 
     @Test
@@ -64,8 +63,8 @@ public class TestComplex {
         Complex cn2 = new Complex(9,4);
         Complex actual = cn1.subtraction(cn2);
         Complex expected = new Complex(-2,5);
-        Assert.assertEquals(expected.real, actual.real, 0.1);
-        Assert.assertEquals(expected.imaginary, actual.imaginary, 0.1);
+        Assert.assertEquals(expected.getReal(), actual.getReal(), 0.1);
+        Assert.assertEquals(expected.getImaginary(), actual.getImaginary(), 0.1);
     }
 
     @Test
@@ -74,8 +73,8 @@ public class TestComplex {
         Complex cn2 = new Complex(9,4);
         Complex actual = cn1.division(cn2);
         Complex expected = new Complex(1.02,0.55);
-        Assert.assertEquals(expected.real, actual.real, 0.1);
-        Assert.assertEquals(expected.imaginary, actual.imaginary, 0.1);
+        Assert.assertEquals(expected.getReal(), actual.getReal(), 0.1);
+        Assert.assertEquals(expected.getImaginary(), actual.getImaginary(), 0.1);
     }
 
     @Test
@@ -83,8 +82,8 @@ public class TestComplex {
         Complex cn = new Complex(7,9);
         Complex actual = cn.minus();
         Complex expected = new Complex(-7,-9);
-        Assert.assertEquals(expected.real, actual.real, 0.1);
-        Assert.assertEquals(expected.imaginary, actual.imaginary, 0.1);
+        Assert.assertEquals(expected.getReal(), actual.getReal(), 0.1);
+        Assert.assertEquals(expected.getImaginary(), actual.getImaginary(), 0.1);
     }
 
     @Test
@@ -116,8 +115,8 @@ public class TestComplex {
         Complex cn = new Complex(7,9);
         Complex actual = cn.complexPow(3);
         Complex expected = new Complex(-1358,594);
-        Assert.assertEquals(expected.real, actual.real, 0.1);
-        Assert.assertEquals(expected.imaginary, actual.imaginary, 0.1);
+        Assert.assertEquals(expected.getReal(), actual.getReal(), 0.1);
+        Assert.assertEquals(expected.getImaginary(), actual.getImaginary(), 0.1);
     }
 
     @Test
@@ -125,8 +124,8 @@ public class TestComplex {
         Complex cn = new Complex(7,9);
         Complex actual = cn.complexRoot(3,2);
         Complex expected = new Complex(-0.49,-2.19);
-        Assert.assertEquals(expected.real, actual.real, 0.1);
-        Assert.assertEquals(expected.imaginary, actual.imaginary, 0.1);
+        Assert.assertEquals(expected.getReal(), actual.getReal(), 0.1);
+        Assert.assertEquals(expected.getImaginary(), actual.getImaginary(), 0.1);
     }
 
     @Test
@@ -180,7 +179,7 @@ public class TestComplex {
     @Test
     public void testGetComplex(){
         Complex cn = new Complex(7,9);
-        String actual = cn.getComplex();
+        String actual = cn.toString();
         String expected = "7.0+i*9.0";
         Assert.assertEquals(expected, actual);
     }
