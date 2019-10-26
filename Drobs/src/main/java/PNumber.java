@@ -19,17 +19,16 @@ public class PNumber implements Operations<PNumber> {
 
     public PNumber(String number, String base, String accuracy) {
 
-        if (CheckB(Integer.parseInt(base)) & CheckC(Integer.parseInt(accuracy))) {
-            if (Integer.parseInt(base) != 10) {
-                this.number = convertToDecimal(number, Integer.parseInt(base));
-                this.base = Integer.parseInt(base);
-                this.accuracy = Integer.parseInt(accuracy);
-            } else {
-                this.number = Double.parseDouble(number);
-                this.base = Integer.parseInt(base);
-                this.accuracy = Integer.parseInt(accuracy);
-            }
-        } else throw new ArithmeticException("error enter data");
+        if (!(CheckB(Integer.parseInt(base)) & CheckC(Integer.parseInt(accuracy)))) {
+            throw new ArithmeticException("error enter data");
+        }
+        this.base = Integer.parseInt(base);
+        this.accuracy = Integer.parseInt(accuracy);
+        if (this.base != 10) {
+            this.number = convertToDecimal(number, Integer.parseInt(base));
+        } else {
+            this.number = Double.parseDouble(number);
+        }
     }
 
     private boolean CheckB(int b) {
