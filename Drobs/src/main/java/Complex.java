@@ -1,6 +1,6 @@
 import static java.lang.Math.*;
 
-// исправить конструктор строки
+
 public class Complex implements Operations<Complex> {
     private double real;
     private double imaginary;
@@ -9,21 +9,12 @@ public class Complex implements Operations<Complex> {
         real = a;
         imaginary = b;
     }
-
-    public Complex(String str) {
-
-        if (str.contains("-")) {//Может быть отрицательм А тогда не сработает (юз реглярные выражения)
-            String[] strs = str.split("-i");
-            real = Double.parseDouble(strs[0]);
-            String[] strI = str.split("i\\*");
-            imaginary = Double.parseDouble(strI[1]) * (-1);
-        } else {
-            String[] strs = str.split("\\+");
-            real = Double.parseDouble(strs[0]);
-            String[] strI = str.split("i\\*");
-            imaginary = Double.parseDouble(strI[1]);
-        }
-
+//без * у i
+    public Complex(String str) throws Exception {
+        if(str.contains("*"))
+            throw new Exception("Delete * from enter string");
+        else
+            checkSaveStr(str);
     }
 
     @Override
@@ -117,8 +108,39 @@ public class Complex implements Operations<Complex> {
     @Override
     public String toString() {
         if (imaginary >= 0)
-            return getRealSting() + "+i*" + getImaginaryString();
-        else return getRealSting() + "-i*" + imaginary * (-1);
+            return getRealSting()  + getImaginaryString() +"i";
+        else return getRealSting()  + imaginary +"i";
     }
-
+    private void checkSaveStr(String in) {
+        String[] parts = in.split("[+-]");
+        Double re = 0.0, im = 0.0;
+        int pos = -1;
+        for (String s : parts) {
+            if (pos != -1) {
+                s = in.charAt(pos) + s;
+            } else {
+                pos = 0;
+                if ("".equals(s)) {
+                    continue;
+                }
+            }
+            pos += s.length();
+            if (s.lastIndexOf('i') == -1) {
+                if (!"+".equals(s) && !"-".equals(s)) {
+                    re += Double.parseDouble(s);
+                }
+            } else {
+                s = s.replace("i", "");
+                if ("+".equals(s)) {
+                    im++;
+                } else if ("-".equals(s)) {
+                    im--;
+                } else {
+                    im += Double.parseDouble(s);
+                }
+            }
+        }
+        real = re;
+        imaginary =im;
+    }
 }

@@ -22,6 +22,8 @@ public class PNumber implements Operations<PNumber> {
         if (!(CheckB(Integer.parseInt(base)) & CheckC(Integer.parseInt(accuracy)))) {
             throw new ArithmeticException("error enter data");
         }
+        if(!CheckNum(number,base)) throw new ArithmeticException("number dont enter to base");
+
         this.base = Integer.parseInt(base);
         this.accuracy = Integer.parseInt(accuracy);
         if (this.base != 10) {
@@ -37,6 +39,14 @@ public class PNumber implements Operations<PNumber> {
 
     private boolean CheckC(int c) {
         return (c >= 0);
+    }
+    private  boolean CheckNum(String str, String base) {
+        String regexp = "";
+        if(base.equals("10")) regexp = "^[0-9]+$";
+        if(base.equals("2")) regexp = "^[0-1]+$";
+        if(base.equals("8")) regexp = "^[0-7]+$";
+        if(base.equals("16")) regexp = "^[0-9A-F]+$";
+        return str.matches(regexp);
     }
 
     public double getNumber() {
