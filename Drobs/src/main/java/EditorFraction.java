@@ -7,16 +7,14 @@ public class EditorFraction extends Fraction implements Editor {
     }
 
     private boolean fractionIsNull() {
-
         return string.equals("0/1");
-
     }
 
     private String addSign() {
-        if(string.charAt(0)=='-')
+        if (string.charAt(0) == '-')
             string = string.substring(1);
-        else string = '-'+string;
-            return string;
+        else string = '-' + string;
+        return string;
     }
 
     private String addNumeral(int num) {

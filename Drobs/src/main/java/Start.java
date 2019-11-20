@@ -9,8 +9,7 @@ public class Start {
 
 
     public static void main(String[] args) {
-        System.out.println("ABC".matches("^[0-9A-F]+$"));
-
+        System.out.println();
     }
 
 }

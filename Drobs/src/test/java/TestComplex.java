@@ -3,7 +3,7 @@ import org.junit.Test;
 
 public class TestComplex {
     @Test
-    public void testComplex(){
+    public void testComplex() throws Exception {
         Complex actual = new Complex(1,-5);
         Complex expected = new Complex("1-i*5");
         Assert.assertEquals(expected.getReal(), actual.getReal(),0.1);

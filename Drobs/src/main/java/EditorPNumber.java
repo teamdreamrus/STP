@@ -2,7 +2,10 @@ import java.util.Scanner;
 
 public class EditorPNumber implements Editor {
     private String string;
-    public EditorPNumber() {}
+
+    public EditorPNumber() {
+    }
+
     private boolean isNull() {
         return string.equals("0.0");
     }
@@ -17,17 +20,21 @@ public class EditorPNumber implements Editor {
     private String addNumeral(int num) {
         return string + changeToChar(num);
     }
+
     private String addZero() {
         return string + ZERO;
     }
+
     private String characterSlaughter() {
         string = string.substring(0, string.length() - 1);
         return string;
     }
+
     private String clear() {
         string = "0.0";
         return string;
     }
+
     public String edit(int number) {
         Scanner in = new Scanner(System.in);
         String str = "";

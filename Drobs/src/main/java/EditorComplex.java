@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class EditorComplex implements Editor{
+public class EditorComplex implements Editor {
     private String string;
 
     public EditorComplex() {
@@ -18,33 +18,37 @@ public class EditorComplex implements Editor{
     }
 
     private String addNumeral(int num) {
-        if (string.charAt(string.length() - 1) == 'i'){
+        if (string.charAt(string.length() - 1) == 'i') {
             string = string.substring(0, string.length() - 1);
             string = string + num + "i";
-        }else string = string + num;
+        } else string = string + num;
 
         return string;
     }
+
     private String addZero() {
-        if (string.charAt(string.length() - 1) == 'i'){
+        if (string.charAt(string.length() - 1) == 'i') {
             string = string.substring(0, string.length() - 1);
             string = string + ZERO + "i";
-        }else string = string + ZERO;
+        } else string = string + ZERO;
 
         return string;
     }
+
     private String characterSlaughter() {
-        if (string.charAt(string.length() - 1) == 'i'){
+        if (string.charAt(string.length() - 1) == 'i') {
             string = string.substring(0, string.length() - 2);
             string = string + "i";
-        }else string = string + "i";
+        } else string = string + "i";
 
         return string;
     }
+
     private String clear() {
         string = "0.0+0.0i";
         return string;
     }
+
     public String edit(int number) {
         Scanner in = new Scanner(System.in);
         String str = "";
