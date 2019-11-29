@@ -20,7 +20,7 @@ public class EditorPNumber implements Editor {
     private String addNumeral(int num) {
         return string + changeToChar(num);
     }
-
+//проверка на .
     private String addZero() {
         return string + ZERO;
     }

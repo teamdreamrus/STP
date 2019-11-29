@@ -5,10 +5,14 @@ public class EditorComplex implements Editor {
 
     public EditorComplex() {
     }
-
+//точка как ставиьть
     private boolean isNull() {
-        return string.equals("0.0+0.0i");
+        return string.equals(NULL_COMPLEX);
     }
+//нк же в улевую строку в константы
+    //тадругих едиторах
+    // тестить измение строки
+    //isNull не просто так существует
 
     private String addSign() {
         if (string.charAt(0) == '-')
@@ -16,8 +20,12 @@ public class EditorComplex implements Editor {
         else string = '-' + string;
         return string;
     }
-
+private String addDot () {
+        string = string+DELIMITER;
+        return string;
+}
     private String addNumeral(int num) {
+        //isNull
         if (string.charAt(string.length() - 1) == 'i') {
             string = string.substring(0, string.length() - 1);
             string = string + num + "i";
@@ -34,7 +42,7 @@ public class EditorComplex implements Editor {
 
         return string;
     }
-
+//Точки остались без проверки когда удаляешь
     private String characterSlaughter() {
         if (string.charAt(string.length() - 1) == 'i') {
             string = string.substring(0, string.length() - 2);
@@ -45,7 +53,7 @@ public class EditorComplex implements Editor {
     }
 
     private String clear() {
-        string = "0.0+0.0i";
+        string = NULL_COMPLEX;
         return string;
     }
 

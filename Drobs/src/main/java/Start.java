@@ -9,7 +9,14 @@ public class Start {
 
 
     public static void main(String[] args) {
-        System.out.println();
+        Fraction fraction = new Fraction(1,2);
+      TMemory<Fraction> f = new TMemory<Fraction>(fraction);
+        try {
+            f.clear();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

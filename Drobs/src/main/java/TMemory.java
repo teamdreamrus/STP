@@ -1,22 +1,37 @@
-public class TMemory<T>{
+public class TMemory<T extends Operations> {
     private T FNumber;
-    private boolean FState;
-    private Object T;
+    private Boolean FState;
 
     public TMemory(T FNumber) {
         this.FNumber = FNumber;
         this.FState = false;
     }
-    public void Store(T E)  {
+
+    public void Store(T E) {
         this.FNumber = E;
         this.FState = true;
     }
-    public T Get()  {
+
+    public T Get() {
         this.FState = true;
         return FNumber;
     }
-    public void Add(T E)  {
-       // this.FNumber;
-        this.FState = true;
+
+    public void add(T number) throws Exception {
+        FNumber = (T) FNumber.add(number);
+        FState = true;
     }
+
+    public void clear() throws Exception {
+        FState= false;
+        FNumber = (T) FNumber.subtraction(FNumber);
+    }
+
+    public String getState(){
+        return FState.toString();
+    }
+    public T getFNumber(){
+        return FNumber;
+    }
+
 }
