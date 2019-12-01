@@ -4,34 +4,51 @@ public class EditorPNumber implements Editor {
     private String string;
 
     public EditorPNumber() {
+        string = NULL_PNUMBER;
     }
 
-    private boolean isNull() {
-        return string.equals("0.0");
+    public boolean isNull() {
+        return string.equals(NULL_PNUMBER);
     }
 
-    private String addSign() {
+    public String addSign() {
         if (string.charAt(0) == '-')
             string = string.substring(1);
         else string = '-' + string;
         return string;
     }
 
-    private String addNumeral(int num) {
-        return string + changeToChar(num);
-    }
-//проверка на .
-    private String addZero() {
-        return string + ZERO;
-    }
-
-    private String characterSlaughter() {
-        string = string.substring(0, string.length() - 1);
+    public String addDot() {
+        if (!string.contains(DELIMITER)) {
+            string = string + DELIMITER;
+        }
         return string;
     }
 
-    private String clear() {
-        string = "0.0";
+    public String addNumeral(int num) {
+        string = string + changeToChar(num);
+        return string;
+    }
+
+    //проверка на .
+    public String addZero() {
+        return string + ZERO;
+    }
+
+    public String characterSlaughter() {
+        if (string.equals("")) return string;
+
+        int count = string.length() - 1;
+        if (string.length() > 1)
+            if (string.charAt(string.length() - 2) == '.') {
+                count--;
+            }
+        string = string.substring(0, count);
+        return string;
+    }
+
+    public String clear() {
+        string = NULL_PNUMBER;
         return string;
     }
 
@@ -61,7 +78,7 @@ public class EditorPNumber implements Editor {
         return str;
     }
 
-    private String getString() {
+    public String getString() {
         return string;
     }
 
@@ -70,7 +87,7 @@ public class EditorPNumber implements Editor {
     }
 
 
-    private char changeToChar(int number) {
+    public char changeToChar(int number) {
         return number < 10 ? (char) ('0' + number) : (char) ('A' + number - 10);
     }
 }

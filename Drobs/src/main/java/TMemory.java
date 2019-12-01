@@ -1,10 +1,12 @@
 public class TMemory<T extends Operations> {
     private T FNumber;
     private Boolean FState;
+    private T defaultValue;
 
     public TMemory(T FNumber) {
         this.FNumber = FNumber;
         this.FState = false;
+        this.defaultValue = FNumber;
     }
 
     public void Store(T E) {
@@ -24,7 +26,7 @@ public class TMemory<T extends Operations> {
 
     public void clear() throws Exception {
         FState= false;
-        FNumber = (T) FNumber.subtraction(FNumber);
+        FNumber = defaultValue;
     }
 
     public String getState(){

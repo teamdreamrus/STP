@@ -4,28 +4,35 @@ public class EditorComplex implements Editor {
     private String string;
 
     public EditorComplex() {
+        string = NULL_COMPLEX;
     }
-//точка как ставиьть
+
     private boolean isNull() {
         return string.equals(NULL_COMPLEX);
     }
-//нк же в улевую строку в константы
-    //тадругих едиторах
+    //так же в других едиторах
     // тестить измение строки
     //isNull не просто так существует
 
-    private String addSign() {
+    public String addSign() {
+
         if (string.charAt(0) == '-')
             string = string.substring(1);
         else string = '-' + string;
         return string;
+
     }
-private String addDot () {
-        string = string+DELIMITER;
+
+    public String addDot() {
+        if (string.charAt(string.length() - 1) == 'i') {
+            string = string.substring(0, string.length() - 1);
+            string = string + DELIMITER + "i";
+        } else string = string + DELIMITER;
         return string;
-}
-    private String addNumeral(int num) {
-        //isNull
+    }
+
+    public String addNumeral(int num) {
+        if(num==0) return addZero();
         if (string.charAt(string.length() - 1) == 'i') {
             string = string.substring(0, string.length() - 1);
             string = string + num + "i";
@@ -33,8 +40,19 @@ private String addDot () {
 
         return string;
     }
+    public String addSignChoice(String sign) {
+      if(sign.equals("-") || sign.equals("+")){
 
-    private String addZero() {
+          if (string.charAt(string.length() - 1) == 'i') {
+              string = string.substring(0, string.length() - 1);
+              string = string + sign + "i";
+          } else string = string + sign;
+      }
+
+        return string;
+    }
+
+    public String addZero() {
         if (string.charAt(string.length() - 1) == 'i') {
             string = string.substring(0, string.length() - 1);
             string = string + ZERO + "i";
@@ -42,17 +60,29 @@ private String addDot () {
 
         return string;
     }
-//Точки остались без проверки когда удаляешь
-    private String characterSlaughter() {
+
+    //Точки остались без проверки когда удаляешь
+    public String characterSlaughter() {
+        if(string.equals("i")) return string;
+        int count = string.length() - 1;
         if (string.charAt(string.length() - 1) == 'i') {
-            string = string.substring(0, string.length() - 2);
+            count--;
+            if(string.charAt(string.length() - 3) == '.'){
+                count--;
+                if(string.charAt(string.length() - 4) == '0'){
+                    count--;
+                }
+            }
+
+            string = string.substring(0, count);
+
             string = string + "i";
         } else string = string + "i";
 
         return string;
     }
 
-    private String clear() {
+    public String clear() {
         string = NULL_COMPLEX;
         return string;
     }
@@ -83,7 +113,7 @@ private String addDot () {
         return str;
     }
 
-    private String getString() {
+    public String getString() {
         return string;
     }
 

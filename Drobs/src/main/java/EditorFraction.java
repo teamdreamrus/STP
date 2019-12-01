@@ -4,36 +4,50 @@ public class EditorFraction extends Fraction implements Editor {
     private String string;
 
     public EditorFraction() {
+        string =  NULL_FRACTION;
     }
 
-    private boolean fractionIsNull() {
-        return string.equals("0/1");
+    public boolean fractionIsNull() {
+        return string.equals(NULL_FRACTION);
     }
 
-    private String addSign() {
+    public String addSign() {
         if (string.charAt(0) == '-')
             string = string.substring(1);
         else string = '-' + string;
         return string;
     }
 
-    private String addNumeral(int num) {
+    public String addNumeral(int num) {
         string = string + num;
         return string;
     }
 
-    private String addZero() {
+    public String addZero() {
         string = string + ZERO;
         return string;
     }
-
-    private String characterSlaughter() {
-        string = string.substring(0, string.length() - 1);
+    public String addSeparator() {
+        if (!string.contains(SEPARATOR)) {
+            string = string + SEPARATOR;
+        }
         return string;
     }
 
-    private String clear() {
-        string = "0/1";
+    public String characterSlaughter() {
+        if (string.equals("")) return string;
+
+        int count = string.length() - 1;
+        if (string.length() > 1)
+            if (string.charAt(string.length() - 2) == '/') {
+                count--;
+            }
+        string = string.substring(0, count);
+        return string;
+    }
+
+    public String clear() {
+        string =  NULL_FRACTION;
         return string;
     }
 
@@ -63,7 +77,7 @@ public class EditorFraction extends Fraction implements Editor {
         return str;
     }
 
-    private String getString() {
+    public String getString() {
         return string;
     }
 
