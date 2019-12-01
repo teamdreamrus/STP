@@ -33,13 +33,14 @@ public class Start {
 //        System.out.println(pNum.addDot());
 //        System.out.println(pNum.addNumeral(5));
 
-        EditorFraction edF = new EditorFraction();
-        System.out.println(edF.getString());
-        System.out.println(edF.characterSlaughter());
-        System.out.println(edF.characterSlaughter());
-        System.out.println(edF.addNumeral(5));
-        System.out.println(edF.addSeparator());
-        System.out.println(edF.addNumeral(3));
+//        EditorFraction edF = new EditorFraction();
+//        System.out.println(edF.getString());
+//        System.out.println(edF.characterSlaughter());
+//        System.out.println(edF.characterSlaughter());
+//        System.out.println(edF.addNumeral(5));
+//        System.out.println(edF.addSeparator());
+//        System.out.println(edF.addNumeral(3));
+
 
 
 

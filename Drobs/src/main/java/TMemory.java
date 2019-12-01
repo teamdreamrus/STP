@@ -25,14 +25,15 @@ public class TMemory<T extends Operations> {
     }
 
     public void clear() throws Exception {
-        FState= false;
+        FState = false;
         FNumber = defaultValue;
     }
 
-    public String getState(){
+    public String getState() {
         return FState.toString();
     }
-    public T getFNumber(){
+
+    public T getFNumber() {
         return FNumber;
     }
 
