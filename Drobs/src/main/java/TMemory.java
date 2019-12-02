@@ -6,7 +6,7 @@ public class TMemory<T extends Operations> {
     public TMemory(T FNumber) {
         this.FNumber = FNumber;
         this.FState = false;
-        this.defaultValue = FNumber;
+        this.defaultValue = (T)TStart.getDefaultValue();
     }
 
     public void Store(T E) {

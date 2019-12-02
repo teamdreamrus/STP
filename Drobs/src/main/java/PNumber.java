@@ -3,7 +3,7 @@ import java.util.Arrays;
 
 import static java.lang.Math.pow;
 
-public class PNumber implements Operations<PNumber> {
+public class PNumber implements Operations<PNumber>, Editor {
     private Double number;
     private int base;
     private int accuracy;
@@ -131,6 +131,11 @@ public class PNumber implements Operations<PNumber> {
     @Override
     public String toString() {
         return convertFromDecimal(number, base, accuracy);
+    }
+
+    @Override
+    public PNumber getDefaultValue() throws Exception {
+        return new PNumber(NULL_PNUMBER, "0", "0");
     }
 
     private String convertFromDecimal(Double number, int base, int accuracy) {

@@ -6,4 +6,5 @@ public interface Operations<T> {
      T division(T number) throws Exception;
      T square() throws Exception;
      T turnOver() throws Exception;
+     T getDefaultValue() throws Exception;
 }

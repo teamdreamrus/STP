@@ -1,4 +1,4 @@
-public class Fraction implements Operations<Fraction> {
+public class Fraction implements Operations<Fraction>, Editor {
 
     private long numerator;
     private long denominator;
@@ -136,4 +136,8 @@ public class Fraction implements Operations<Fraction> {
         return new Fraction(numerator * d1.denominator - d1.numerator * denominator, d1.denominator * denominator);
     }
 
+    @Override
+    public Fraction getDefaultValue() throws Exception {
+        return new Fraction(NULL_FRACTION);
+    }
 }

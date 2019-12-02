@@ -1,7 +1,7 @@
 import static java.lang.Math.*;
 
 
-public class Complex implements Operations<Complex> {
+public class Complex implements Operations<Complex>, Editor {
     private double real;
     private double imaginary;
 
@@ -108,7 +108,7 @@ public class Complex implements Operations<Complex> {
     @Override
     public String toString() {
         if (imaginary >= 0)
-            return getRealSting()  + getImaginaryString() +"i";
+            return getRealSting()  +"+"+ getImaginaryString() +"i";
         else return getRealSting()  + imaginary +"i";
     }
     private void checkSaveStr(String in) {
@@ -142,5 +142,10 @@ public class Complex implements Operations<Complex> {
         }
         real = re;
         imaginary =im;
+    }
+
+    @Override
+    public Complex getDefaultValue() throws Exception {
+        return new Complex(NULL_COMPLEX);
     }
 }

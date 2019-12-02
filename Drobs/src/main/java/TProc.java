@@ -28,10 +28,11 @@ public class TProc<T extends Operations> {
     private TOperations operation;
     private T defaultValue;
 
-    public TProc(T TStart) {
+    public TProc(T TStart) throws Exception {
         Lop_Res = TStart;
         Rop = TStart;
         operation = TOperations.NONE;
+        defaultValue = (T)TStart.getDefaultValue();
     }
 
     //нету значений по умолчанию
