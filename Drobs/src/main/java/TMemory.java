@@ -3,10 +3,10 @@ public class TMemory<T extends Operations> {
     private Boolean FState;
     private T defaultValue;
 
-    public TMemory(T FNumber) {
+    public TMemory(T FNumber) throws Exception {
         this.FNumber = FNumber;
         this.FState = false;
-        this.defaultValue = (T)TStart.getDefaultValue();
+        this.defaultValue = (T)FNumber.getDefaultValue();
     }
 
     public void Store(T E) {
