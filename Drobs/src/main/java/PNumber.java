@@ -3,7 +3,7 @@ import java.util.Arrays;
 
 import static java.lang.Math.pow;
 
-public class PNumber implements Operations<PNumber>, Editor {
+public class PNumber implements Operations<PNumber>, Editor, Comparable<PNumber> {
     private Double number;
     private int base;
     private int accuracy;
@@ -192,5 +192,11 @@ public class PNumber implements Operations<PNumber>, Editor {
 
     private Double changeToNumber(char number) {
         return number > '9' ? (double) number - 'A' + 10 : number - '0';
+    }
+
+    @Override
+    public int compareTo(PNumber pNumber) {
+//        return this.equals(pNumber)? 0 : (this.isMoreThen(fraction)? 1 : -1);
+    return 0;
     }
 }

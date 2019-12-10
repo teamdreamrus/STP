@@ -42,8 +42,12 @@ public class Start {
 //        System.out.println(edF.addNumeral(3));
 
 
-
-
+Fraction fr = new Fraction("1/3");
+TSet tset = new TSet();
+tset.add(fr);
+Fraction fr2 = new Fraction(1,3);
+tset.add(fr2);
+        System.out.println(tset.getTSet());
 
 
 
