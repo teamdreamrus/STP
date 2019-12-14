@@ -1,4 +1,4 @@
-public class Fraction implements Operations<Fraction>, Editor {
+public class Fraction implements Operations<Fraction>, Editor, Comparable<Fraction> {
 
     private long numerator;
     private long denominator;
@@ -139,5 +139,10 @@ public class Fraction implements Operations<Fraction>, Editor {
     @Override
     public Fraction getDefaultValue() throws Exception {
         return new Fraction(NULL_FRACTION);
+    }
+
+    @Override
+    public int compareTo(Fraction fraction) {
+        return this.equally(fraction)? 0 : (this.isMoreThen(fraction)? 1 : -1);
     }
 }

@@ -16,7 +16,7 @@ public class TSet<T extends Operations> {
     }
 
     public void add(T data) {
-        tSet.add(data);
+            tSet.add(data);
     }
 
     public void remove(T data) {
@@ -66,4 +66,5 @@ public class TSet<T extends Operations> {
     public Set<T> getTSet() {
         return tSet;
     }
+
 }
