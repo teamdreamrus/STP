@@ -2,6 +2,7 @@ import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
 import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 
 import java.io.Console;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -44,6 +45,18 @@ public class Start {
 
 
 
+//poly
+
+        ArrayList<TMember> members1 = new ArrayList<>();
+        members1.add(new TMember(3, 2));
+        members1.add(new TMember(6, 4));
+        ArrayList<TMember> members2 = new ArrayList<>();
+        members2.add(new TMember(3, 2));
+        members2.add(new TMember(6, 4));
+        TPoly pol1 = new TPoly(members1);
+        TPoly pol2 = new TPoly(members2);
+
+        System.out.println(pol1.add(pol2).getPolinom());
 
 
 
@@ -53,9 +66,7 @@ public class Start {
 
 
 
-
-
-       // System.out.println(edC.);
+        // System.out.println(edC.);
 
 
 

@@ -35,7 +35,6 @@ public class TProc<T extends Operations> {
         defaultValue = (T)TStart.getDefaultValue();
     }
 
-    //нету значений по умолчанию
     public void clearProc() {
         Lop_Res = defaultValue;
         Rop = defaultValue;
